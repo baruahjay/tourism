@@ -134,11 +134,54 @@ class DemoController extends Controller
 
     # operator ###############################################
 
-    # get operator
     public function getOperator(Request $request)
     {
         $data = OperatorModel::getOperator();
         return $data;
+    }
+
+    function addOperator($place_id, $name, $rating, $contact_number)
+    {
+        try {
+            OperatorModel::addOperator(
+                $place_id,
+                $name,
+                $rating,
+                $contact_number
+            );
+
+            return true;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    function updateOperator($operator_id, $place_id, $name, $rating, $contact_number)
+    {
+        try {
+            OperatorModel::updateOperator(
+                $operator_id,
+                $place_id,
+                $name,
+                $rating,
+                $contact_number
+            );
+
+            return true;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    function removeOperator($operator_id)
+    {
+        try {
+            OperatorModel::removeOperator($operator_id);
+
+            return true;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
     }
 
     # user ###############################################
@@ -148,6 +191,48 @@ class DemoController extends Controller
     {
         $data = UserModel::getUser();
         return $data;
+    }
+
+    function addUser($name, $mobile, $gender)
+    {
+        try {
+            UserModel::addUser(
+                $name,
+                $mobile,
+                $gender
+            );
+
+            return true;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    function updateUser($user_id, $name, $mobile, $gender)
+    {
+        try {
+            UserModel::updateUser(
+                $user_id,
+                $name,
+                $mobile,
+                $gender
+            );
+
+            return true;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    function removeUser($user_id)
+    {
+        try {
+            UserModel::removeUser($user_id);
+
+            return true;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
     }
 
 

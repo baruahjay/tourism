@@ -34,6 +34,12 @@ Route::group([
 
 ], function ($router) {
     Route::get('/', [DemoController::class, 'getOperator']);
+
+    Route::get('/add/{place_id}/{name}/{rating}/{contact_number}/', [DemoController::class, 'addOperator']);
+
+    Route::get('/update/{operator_id}/{place_id}/{name}/{rating}/{contact_number}/', [DemoController::class, 'updateOperator']);
+
+    Route::get('/delete/{operator_id}', [DemoController::class, 'removeOperator']);
 });
 
 Route::group([
@@ -41,5 +47,11 @@ Route::group([
 
 ], function ($router) {
     Route::get('/', [DemoController::class, 'getUser']);
+
+    Route::get('/add/{name}/{mobile}/{gender}/', [DemoController::class, 'addUser']);
+
+    Route::get('/update/{user_id}/{name}/{mobile}/{gender}/', [DemoController::class, 'updateUser']);
+
+    Route::get('/delete/{user_id}', [DemoController::class, 'removeUser']);
 });
 

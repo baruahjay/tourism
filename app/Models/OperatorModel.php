@@ -21,57 +21,45 @@ class OperatorModel extends Model
             ->get();
     }
 
-    // protected function addPlace(
-    //     $name,
-    //     $location,
-    //     $popular_sites,
-    //     $state,
-    //     $district,
-    //     $place_category,
-    //     $created_at,
-    //     $updated_at,
-    // ): bool {
-    //     return DB::table('places')
-    //         ->insert(
-    //             [
-    //                 'name' => $name,
-    //                 'location' => $location,
-    //                 'popular_sites' => $popular_sites,
-    //                 'state' => $state,
-    //                 'district' => $district,
-    //                 'place_category' => $place_category,
-    //                 'created_at' => $created_at,
-    //                 'updated_at' => $updated_at,
-    //             ]
-    //         );
-    // }
+    protected function addOperator(
+        $place_id,
+        $name,
+        $rating,
+        $contact_number
+    ): bool {
+        return DB::table('tour_operators')
+            ->insert(
+                [
+                    'place_id' => $place_id,
+                    'name' => $name,
+                    'rating' => $rating,
+                    'contact_number' => $contact_number,
+                ]
+            );
+    }
 
-    // protected function updatePlace(
-    //     $place_id,
-    //     $name,
-    //     $location,
-    //     $popular_sites,
-    //     $state,
-    //     $district,
-    //     $place_category,
-    // ): bool {
-    //     return DB::table('places')
-    //         ->where('place_id', $place_id)
-    //         ->update([
-    //             'name' => $name,
-    //             'location' => $location,
-    //             'popular_sites' => $popular_sites,
-    //             'state' => $state,
-    //             'district' => $district,
-    //             'place_category' => $place_category,
-    //         ]);
-    // }
+    protected function updateOperator(
+        $operator_id,
+        $place_id,
+        $name,
+        $rating,
+        $contact_number
+    ): bool {
+        return DB::table('tour_operators')
+            ->where('operator_id', $operator_id)
+            ->update([
+                'place_id' => $place_id,
+                'name' => $name,
+                'rating' => $rating,
+                'contact_number' => $contact_number,
+            ]);
+    }
 
-    // protected function removePlace(
-    //     $place_id
-    // ): bool {
-    //     return DB::table('places')
-    //         ->where(['place_id' => $place_id])
-    //         ->delete();
-    // }
+    protected function removeOperator(
+        $operator_id
+    ): bool {
+        return DB::table('tour_operators')
+            ->where(['operator_id' => $operator_id])
+            ->delete();
+    }
 }

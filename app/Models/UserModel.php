@@ -23,57 +23,41 @@ class UserModel extends Model
             ->get();
     }
 
-    // protected function addPlace(
-    //     $name,
-    //     $location,
-    //     $popular_sites,
-    //     $state,
-    //     $district,
-    //     $place_category,
-    //     $created_at,
-    //     $updated_at,
-    // ): bool {
-    //     return DB::table('places')
-    //         ->insert(
-    //             [
-    //                 'name' => $name,
-    //                 'location' => $location,
-    //                 'popular_sites' => $popular_sites,
-    //                 'state' => $state,
-    //                 'district' => $district,
-    //                 'place_category' => $place_category,
-    //                 'created_at' => $created_at,
-    //                 'updated_at' => $updated_at,
-    //             ]
-    //         );
-    // }
+    protected function addUser(
+        $name,
+        $mobile,
+        $gender
+    ): bool {
+        return DB::table('users')
+            ->insert(
+                [
+                    'name' => $name,
+                    'mobile' => $mobile,
+                    'gender' => $gender
+                ]
+            );
+    }
 
-    // protected function updatePlace(
-    //     $place_id,
-    //     $name,
-    //     $location,
-    //     $popular_sites,
-    //     $state,
-    //     $district,
-    //     $place_category,
-    // ): bool {
-    //     return DB::table('places')
-    //         ->where('place_id', $place_id)
-    //         ->update([
-    //             'name' => $name,
-    //             'location' => $location,
-    //             'popular_sites' => $popular_sites,
-    //             'state' => $state,
-    //             'district' => $district,
-    //             'place_category' => $place_category,
-    //         ]);
-    // }
+    protected function updateUser(
+        $user_id,
+        $name,
+        $mobile,
+        $gender
+    ): bool {
+        return DB::table('users')
+            ->where('user_id', $user_id)
+            ->update([
+                'name' => $name,
+                'mobile' => $mobile,
+                'gender' => $gender
+            ]);
+    }
 
-    // protected function removePlace(
-    //     $place_id
-    // ): bool {
-    //     return DB::table('places')
-    //         ->where(['place_id' => $place_id])
-    //         ->delete();
-    // }
+    protected function removeUser(
+        $user_id
+    ): bool {
+        return DB::table('users')
+            ->where(['user_id' => $user_id])
+            ->delete();
+    }
 }
